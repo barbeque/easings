@@ -1,0 +1,28 @@
+.card {
+	position: absolute;
+	width: 100px;
+	height: 180px;
+	border: 2px solid black;
+	border-radius: 8px;
+	background-color: white;
+	padding: 0px;
+}
+
+.suit {
+	color: red;
+	position: relative;
+	left: 83px;
+	top: 6px;
+}
+
+.number {
+	color: red;
+	font-size: 30;
+	margin-right: 5px;
+	float: right;
+	margin-top: 3px;
+}
+
+body {
+	background-color: teal;
+}

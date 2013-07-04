@@ -1,0 +1,57 @@
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="core.css">
+	</head>
+	<body>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+
+		<script type="text/javascript">
+			var currentId = 0;
+
+			var easings = [
+				'easeOutCubic',
+				'easeInQuint',
+				'easeInCirc',
+				'easeInOutBack',
+				'easeInOutExpo',
+				'easeOutQuad'
+			];
+
+			$(document).ready(function() {
+				addCard(pickSuit(), pickNumber(), "card" + currentId);
+				startAnimating("#card" + currentId);
+			});			
+
+			function startAnimating(cardSelector) {
+				$(cardSelector).animate({
+					left: (Math.random() * ($(window).width() - 100)),
+					top: (Math.random() * ($(window).height() - 180))
+				}, 600, pick(easings), function() {
+					addCard(pickSuit(), pickNumber
+						(), 'card' + (currentId + 1));
+					currentId++;
+					var nextSelector = 'card' + currentId;
+					startAnimating('#' + nextSelector);
+				});
+			}
+
+			function pickNumber() {
+				return pick(['A', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'Q', 'K', 'J']);
+			}
+
+			function pickSuit() {
+				return pick(['A', 'B', 'C', 'D'])
+			}
+
+			function pick(array) {
+				return array[Math.floor(Math.random() * array.length)];
+			}
+
+			function addCard(suit, number, id) {
+				var cardDiv = "<div class=\"card\" id=\"" + id + "\"><div class=\"suit\">" + suit + "</div><div class=\"number\">" + number + "</div></div>";
+				$("body").append($("<div/>").html(cardDiv).contents());
+			}
+		</script>
+	</body>
+</html>
