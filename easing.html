@@ -5,6 +5,7 @@
 	<body>
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
 		<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+		<script src="utils.js"></script>
 
 		<script type="text/javascript">
 			var currentId = 0;
@@ -28,6 +29,7 @@
 					left: (Math.random() * ($(window).width() - 100)),
 					top: (Math.random() * ($(window).height() - 180))
 				}, 600, pick(easings), function() {
+					// Callback hell, but it works.
 					addCard(pickSuit(), pickNumber
 						(), 'card' + (currentId + 1));
 					currentId++;
@@ -43,10 +45,6 @@
 			function pickSuit() {
 				// Unicode suits!
 				return pick(['\u2660', '\u2665', '\u2666', '\u2663'])
-			}
-
-			function pick(array) {
-				return array[Math.floor(Math.random() * array.length)];
 			}
 
 			function addCard(suit, number, id) {
